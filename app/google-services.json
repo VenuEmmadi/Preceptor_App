@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1017306255551",
+    "firebase_url": "https://preceptor-3c8e7.firebaseio.com",
+    "project_id": "preceptor-3c8e7",
+    "storage_bucket": "preceptor-3c8e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017306255551:android:ce601c228fbb954882360a",
+        "android_client_info": {
+          "package_name": "com.skillship.preceptor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017306255551-nn30o7i9mccppssfen3b8pel75cn131j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skillship.preceptor",
+            "certificate_hash": "b2ff64cf210c5c7f28117f24e58e9b777ea1e0b6"
+          }
+        },
+        {
+          "client_id": "1017306255551-i7p923o843nsmpu64oh5mu8ahlth5adb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgY_6_KFqRfHhBsc_6JpSjFyx0uFsZxhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017306255551-i7p923o843nsmpu64oh5mu8ahlth5adb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
