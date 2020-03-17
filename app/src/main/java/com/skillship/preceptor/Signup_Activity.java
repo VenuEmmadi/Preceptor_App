@@ -57,6 +57,7 @@ public class Signup_Activity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                             } else {
                                 startActivity(new Intent(Signup_Activity.this, MainActivity.class));
+                                finish();
                             }
                         }
                     });
