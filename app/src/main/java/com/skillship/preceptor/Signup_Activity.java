@@ -1,8 +1,5 @@
 package com.skillship.preceptor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -60,21 +60,21 @@ public class Signup_Activity extends AppCompatActivity {
                             if (task.isSuccessful()) {
 
                                 RegDatabase regDatabase = new RegDatabase(
-                                         emailID, paswd
+                                        emailID, paswd
                                 );
 
-                                        FirebaseDatabase.getInstance().getReference(databaseReference.getKey())
-                                                .child(firebaseAuth.getCurrentUser().getUid())
-                                                .setValue(regDatabase).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                                FirebaseDatabase.getInstance().getReference(databaseReference.getKey())
+                                        .child(firebaseAuth.getCurrentUser().getUid())
+                                        .setValue(regDatabase).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                                         @Override
+                                                                                         public void onComplete(@NonNull Task<Void> task) {
 
-                                                Toast.makeText(Signup_Activity.this, "Registered Successgully!",
-                                                        Toast.LENGTH_LONG).show();
-                                                startActivity(new Intent(Signup_Activity.this, MainActivity.class));
-                                                finish();
-                                            }
-                                        }
+                                                                                             Toast.makeText(Signup_Activity.this, "Registered Successgully!",
+                                                                                                     Toast.LENGTH_LONG).show();
+                                                                                             startActivity(new Intent(Signup_Activity.this, MainActivity1.class));
+                                                                                             finish();
+                                                                                         }
+                                                                                     }
                                 );
                             }
                             else {
@@ -89,6 +89,7 @@ public class Signup_Activity extends AppCompatActivity {
                 }
             }
         });
+
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

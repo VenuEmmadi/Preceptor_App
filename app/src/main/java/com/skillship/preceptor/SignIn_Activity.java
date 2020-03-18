@@ -1,22 +1,26 @@
 package com.skillship.preceptor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import android.os.Bundle;
 
 public class SignIn_Activity extends AppCompatActivity {
 
@@ -35,13 +39,22 @@ public class SignIn_Activity extends AppCompatActivity {
         logInpasswd = findViewById(R.id.loginpaswd);
         btnLogIn = findViewById(R.id.btnLogIn);
         signup = findViewById(R.id.TVSignIn);
+        findViewById(R.id.close_activity).setOnClickListener(
+                new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+
+                    }
+                });
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     Toast.makeText(SignIn_Activity.this, "User logged in ", Toast.LENGTH_SHORT).show();
-                    Intent I = new Intent(SignIn_Activity.this, MainActivity.class);
+                    Intent I = new Intent(SignIn_Activity.this, MainActivity1.class);
                     startActivity(I);
                 } else {
                     Toast.makeText(SignIn_Activity.this, "Login to continue", Toast.LENGTH_SHORT).show();
@@ -75,7 +88,7 @@ public class SignIn_Activity extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(SignIn_Activity.this, "Not sucessfull", Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(SignIn_Activity.this, MainActivity.class));
+                                startActivity(new Intent(SignIn_Activity.this, MainActivity1.class));
                             }
                         }
                     });
@@ -84,6 +97,29 @@ public class SignIn_Activity extends AppCompatActivity {
                 }
             }
         });
+        @SuppressLint("WrongViewCast") AppCompatCheckBox checkbox = (AppCompatCheckBox) findViewById(R.id.show_hide_password);
+        final EditText edtPassword = (EditText) findViewById(R.id.loginpaswd);
+        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    // show password
+                    edtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                } else {
+                    // hide password
+                    edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
+        findViewById(R.id.forgot_password).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(SignIn_Activity.this, ForgotPassword.class));
+                    }
+                }
+        );
+
 
     }
 
